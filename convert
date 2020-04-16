@@ -1,0 +1,73 @@
+#include <stdio.h>
+#define MAX_SIZE 100
+int stack[MAX_SIZE];
+int top = -1;
+int is_full();
+int is_empty();
+void push(int key);
+int pop();
+
+void main()
+{
+int dec;
+int temp;
+int i;
+int k;
+
+for (i = 0; i < 5; i++)
+{
+printf("\nType a decimal number: \n");
+scanf("%d", &dec);
+
+while (dec >= 1)
+{
+if (is_full() != -1)
+{
+temp = dec % 2;
+push(temp);
+ dec = dec / 2;
+}
+}
+
+printf("\nBinary number is : \n");
+
+while (top != -1)
+{
+if (is_empty() != -1)
+{
+k = pop();
+printf("%d", k);
+}
+}
+}
+}
+
+int is_full()
+{
+if (top == MAX_SIZE - 1)
+return -1;
+else
+return 0;
+}
+
+int is_empty()
+{
+if (top == -1)
+return -1;
+else
+return 0;
+}
+
+void push(int key)
+{
+top++;
+stack[top] = key;
+}
+
+int pop()
+{
+int delete_key;
+delete_key = stack[top];
+top—;
+return delete_key;
+}
